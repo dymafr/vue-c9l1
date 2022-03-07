@@ -1,17 +1,16 @@
 <template>
-  <button @click="toggle = !toggle">Toggle</button>
-  <template v-if="toggle">
-    <Blog v-for="title of titles" :title="title" :key="title" class="parent"
-  /></template>
+  <input
+    :value="content"
+    @input="content = ($event.target as HTMLInputElement).value"
+    type="text"
+  />
+  <p>{{ content }}</p>
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive, ref } from 'vue';
-import Blog from './Blog.vue';
+import { ref } from 'vue';
 
-const titles = ref(['Un titre', 'Un autre titre', 'Encore un dernier titre']);
-
-const toggle = ref(true);
+const content = ref('');
 </script>
 
 <style scoped lang="scss"></style>
